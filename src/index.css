@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Quicksand", sans-serif;
+  scroll-behavior: smooth;
+}
+
+::selection {
+  color: #55b8ff;
+  background: #5d75a5;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #eff6ff;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #55b8ff;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.grid-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-flow: dense;
+  gap: 20px;
+}
+
+.grid-gallery .grid-item figure img {
+  object-fit: cover;
+}
+
+.grid-gallery .grid-item:nth-child(3n - 2) {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+@media screen and (max-width: 1024px) {
+  .grid-gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .grid-gallery .grid-item:nth-child(3n - 2) {
+    grid-column: unset;
+    grid-row: unset;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .grid-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid-gallery .grid-item:nth-child(3n - 2) {
+    grid-column: unset;
+    grid-row: unset;
+  }
+}
