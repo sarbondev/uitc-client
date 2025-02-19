@@ -46,9 +46,9 @@ function App() {
     },
   ]);
 
-  // if (isAnimating) {
-  //   return <Welcome />;
-  // }
+  if (isAnimating) {
+    return <Welcome />;
+  }
 
   return (
     <>
