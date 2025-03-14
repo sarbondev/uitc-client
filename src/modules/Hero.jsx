@@ -1,10 +1,9 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Autoplay } from "swiper/modules";
+import { Carousel } from "../components/Carousel/Carousel";
 import "swiper/css";
 import "swiper/css/effect-fade";
-import WaterAnimation from "../components/Water-Animation/WaterAnimation";
-import { Carousel } from "../components/Carousel/Carousel";
 
 export const Hero = () => {
   const heroTitles = [

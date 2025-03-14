@@ -12,7 +12,7 @@ const BackgroundAnimation = () => {
 
     const hideTimer = setTimeout(() => {
       setIsHidden(true);
-    }, 4200); 
+    }, 4200);
 
     return () => {
       clearTimeout(fadeOutTimer);
