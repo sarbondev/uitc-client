@@ -1,15 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-
 import "./Carousel.css";
-import img1 from "../../assets/photos/1.webp";
-import img2 from "../../assets/photos/2.webp";
-import img3 from "../../assets/photos/3.webp";
-import img4 from "../../assets/photos/4.webp";
-import img5 from "../../assets/photos/5.jpg";
-import img6 from "../../assets/photos/6.jpg";
-import img7 from "../../assets/photos/7.jpg";
-import img8 from "../../assets/photos/8.jpg";
-import img9 from "../../assets/photos/9.jpg";
 
 export const Carousel = () => {
   let radius = 300;
@@ -21,18 +11,7 @@ export const Carousel = () => {
   const spinRef = useRef(null);
   const ground = useRef(null);
   const [images, setImages] = useState([]);
-
-  const [importedImages, _] = useState([
-    img1,
-    img2,
-    img3,
-    img4,
-    img5,
-    img6,
-    img7,
-    img8,
-    img9,
-  ]);
+  const [importedImages, setImportedImages] = useState([]);
 
   let sX,
     sY,
@@ -42,13 +21,26 @@ export const Carousel = () => {
   let tY = 10;
 
   useEffect(() => {
-    const images = document.querySelectorAll(".carouselImg");
-    setImages(Array.from(images));
+    fetch("http://localhost:5000/api/carousel")
+      .then((res) => res.json())
+      .then((data) => {
+        if (Array.isArray(data)) {
+          setImportedImages(data);
+        } else {
+          console.error("Invalid data format", data);
+        }
+      })
+      .catch((err) => console.error("Error fetching images:", err));
   }, []);
 
   useEffect(() => {
+    const images = document.querySelectorAll(".carouselImg");
+    setImages(Array.from(images));
+  }, [importedImages]);
+
+  useEffect(() => {
     setTimeout(init, 1000);
-  }, [init]);
+  }, [images]);
 
   function init(delayTime) {
     for (let i = 0; i < images.length; i++) {
@@ -158,8 +150,8 @@ export const Carousel = () => {
             <img
               className="carouselImg object-cover rounded-xl"
               key={index}
-              src={img}
-              alt={index}
+              src={img.fileName}
+              alt={`Image ${index}`}
             />
           ))}
         </div>
