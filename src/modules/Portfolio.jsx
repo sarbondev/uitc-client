@@ -1,66 +1,38 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { fetcher } from "../middlewares/Fetcher";
 import useSWR from "swr";
 import "react-loading-skeleton/dist/skeleton.css";
 
 export const Portfolio = () => {
-  const [urlToGetData, setUrlToGetData] = useState(`/projects`);
-  const { data, error, isLoading, mutate } = useSWR(
-    `${urlToGetData}?pageSize=6`,
-    fetcher
-  );
-
-  const [hasMore, setHasMore] = useState(true);
+  const [pageSize, setPageSize] = useState(6);
   const [selectedCategory, setSelectedCategory] = useState("");
 
+  const getUrl = (category, size) => {
+    if (category) {
+      return `/projects?category=${category}&pageSize=${size}`;
+    }
+    return `/projects?pageSize=${size}`;
+  };
+
+  const [url, setUrl] = useState(getUrl(selectedCategory, pageSize));
+
+  const { data, error, isLoading, mutate } = useSWR(url, fetcher);
+
   useEffect(() => {
-    mutate();
-  }, [urlToGetData, mutate]);
+    setUrl(getUrl(selectedCategory, pageSize));
+  }, [selectedCategory, pageSize]);
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
-    setUrlToGetData(`/projects${category ? `?category=${category}&` : ""}`);
-    setHasMore(true);
+    setPageSize(6);
+    setUrl(getUrl(category, 6));
   };
 
-  const handleShowMore = () => {
-    if (data?.data?.length < 6) {
-      setHasMore(false);
-    }
+  const handleLoadMore = () => {
+    const newPageSize = pageSize + 6;
+    setPageSize(newPageSize);
   };
-
-  const renderSkeletons = () =>
-    Array.from({ length: 6 }).map((_, index) => (
-      <div
-        key={index}
-        className="rounded-xl grid-item h-full w-full bg-gray-200 animate-pulse"
-      ></div>
-    ));
-
-  const renderProjects = () =>
-    data?.data?.length > 0 ? (
-      data.data.map((item, index) => (
-        <Link
-          to={"/loyihalar/" + item._id}
-          key={index}
-          className="card overflow-hidden grid-item h-full w-full"
-          data-aos="fade-up"
-        >
-          <img
-            src={item.images[0]}
-            className="w-full h-full object-cover rounded-xl"
-            alt={item.title || "Portfolio Image"}
-          />
-        </Link>
-      ))
-    ) : (
-      <div className="flex items-center justify-center h-[40vh]">
-        <h1 className="text-4xl font-bold text-center text-[#5D75A5]">
-          Loyihalar yo'q
-        </h1>
-      </div>
-    );
 
   return (
     <section className="px-4" id="our-projects">
@@ -92,18 +64,46 @@ export const Portfolio = () => {
         </div>
 
         {isLoading ? (
-          <div className="py-10 grid-gallery h-screen">{renderSkeletons()}</div>
+          <div className="py-10 grid-gallery h-screen">
+            {Array.from({ length: 6 }).map((_, index) => (
+              <div
+                key={index}
+                className="rounded-xl grid-item h-full w-full bg-gray-200 animate-pulse"
+              ></div>
+            ))}
+          </div>
+        ) : data?.data?.length > 0 ? (
+          <div className="py-10 grid-gallery">
+            {data.data.map((item, index) => (
+              <Link
+                to={"/loyihalar/" + item._id}
+                key={index}
+                className="card overflow-hidden grid-item h-full w-full"
+                data-aos="fade-up"
+              >
+                <img
+                  src={item.images[0] || "/placeholder.svg"}
+                  className="w-full h-full object-cover rounded-xl"
+                  alt={item.title || "Portfolio Image"}
+                />
+              </Link>
+            ))}
+          </div>
         ) : (
-          <div className="py-10 grid-gallery">{renderProjects()}</div>
+          <div className="flex items-center justify-center h-[40vh]">
+            <h1 className="text-4xl font-bold text-center text-[#5D75A5]">
+              Loyiha mavjud emas
+            </h1>
+          </div>
         )}
 
-        {hasMore && (
+        {data?.data?.length > 0 && data?.total > data?.data?.length && (
           <div className="flex justify-center mt-5">
             <button
-              onClick={handleShowMore}
+              onClick={handleLoadMore}
               className="bg-[#5D75A5] text-white font-semibold py-2 px-6 rounded-lg hover:bg-[#4A5F88] transition-all"
             >
-              Load More
+              Ko'proq ko'rish
             </button>
           </div>
         )}
