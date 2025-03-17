@@ -21,7 +21,8 @@ export const Carousel = () => {
   let tY = 10;
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/carousel")
+    fetch("https://server.uitc.uz/api/carousel")
+      // fetch("http://localhost:5000.uz/api/carousel")
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data)) {
