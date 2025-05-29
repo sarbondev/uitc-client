@@ -5,9 +5,10 @@ import { fetcher } from "../middlewares/Fetcher";
 
 export const Courses = () => {
   const { data, error, isLoading } = useSWR(`/courses`, fetcher);
+
   const [searchTerm, setSearchTerm] = useState("");
 
-  const filteredCourses = data?.data?.filter((course) =>
+  const filteredCourses = data?.filter((course) =>
     course.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -35,13 +36,14 @@ export const Courses = () => {
           </form>
         </div>
 
-        {error && (
-          <div className="flex items-center justify-center h-[40vh]">
-            <h1 className="text-4xl font-bold text-red-600">
-              Xatolik yuz berdi!
-            </h1>
-          </div>
-        )}
+        {!isLoading ||
+          (error && (
+            <div className="flex items-center justify-center h-[40vh]">
+              <h1 className="text-4xl font-bold text-red-600">
+                Xatolik yuz berdi!
+              </h1>
+            </div>
+          ))}
 
         {isLoading ? (
           <div className="pt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -86,7 +88,7 @@ export const Courses = () => {
                     <img
                       src={course.image}
                       alt={course.title}
-                      className="w-full object-cover"
+                      className="w-full object-cover h-[300px]"
                     />
                   </Link>
                   <div className="p-4 flex flex-col gap-2">
