@@ -34,17 +34,13 @@ export const CourseDetail = () => {
       <section className="min-h-screen">
         <div className="container pt-20">
           <div className="grid grid-cols-1 lg:grid-cols-2">
-            <img
-              src={data.data.image}
-              alt={data.data.title}
-              className="w-full"
-            />
+            <img src={data.image} alt={data.title} className="w-full" />
             <div className="p-6 flex flex-col justify-center gap-6">
               <h1 className="text-[#5D75A5] text-4xl font-bold">
-                {data.data.title}
+                {data.title}
               </h1>
               <p className="text-lg opacity-70 font-semibold">
-                {data.data.description}
+                {data.description}
               </p>
               <div className="flex gap-4 items-center">
                 <a
@@ -54,7 +50,7 @@ export const CourseDetail = () => {
                   Ro'yxatdan o'tish
                 </a>
                 <span className="text-[#55B8FF] text-2xl font-bold">
-                  {data.data.price?.toLocaleString()} so'm
+                  {data.price?.toLocaleString()} so'm
                 </span>
               </div>
             </div>

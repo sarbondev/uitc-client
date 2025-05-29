@@ -51,14 +51,6 @@ export const Header = () => {
                 Kurslar
               </Link>
             </li>
-            <li>
-              <Link
-                to="/staffs"
-                className="font-bold text-[#5D75A5] hover:text-[#55B8FF] transition-all text-[15px]"
-              >
-                Jamoa
-              </Link>
-            </li>
           </ul>
         </nav>
         <div className="flex gap-4 items-center">
