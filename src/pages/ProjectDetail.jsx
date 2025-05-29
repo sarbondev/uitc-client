@@ -29,13 +29,13 @@ export const ProjectDetail = () => {
 
   const goToPrevious = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? data.data.images.length - 1 : prevIndex - 1
+      prevIndex === 0 ? data.images.length - 1 : prevIndex - 1
     );
   };
 
   const goToNext = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === data.data.images.length - 1 ? 0 : prevIndex + 1
+      prevIndex === data.images.length - 1 ? 0 : prevIndex + 1
     );
   };
 
@@ -65,12 +65,10 @@ export const ProjectDetail = () => {
     <section className="min-h-screen">
       <div className="container mx-auto p-8 space-y-6">
         <div className="flex justify-between">
-          <h1 className="text-6xl font-bold text-[#5D75A5]">
-            {data.data.title}
-          </h1>
-          {data.data.category === "web" ? (
+          <h1 className="text-6xl font-bold text-[#5D75A5]">{data.title}</h1>
+          {data.category === "web" ? (
             <a
-              href={`https://${data.data.url}`}
+              href={`https://${data.url}`}
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 font-bold inline-flex items-center underline"
@@ -80,9 +78,9 @@ export const ProjectDetail = () => {
             </a>
           ) : null}
         </div>
-        <p className="text-lg text-gray-600 mb-8">{data.data.description}</p>
+        <p className="text-lg text-gray-600 mb-8">{data.description}</p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {data.data.images.map((image, index) => (
+          {data.images.map((image, index) => (
             <div
               key={index}
               className="rounded-xl overflow-hidden shadow-lg cursor-pointer"
@@ -109,7 +107,7 @@ export const ProjectDetail = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <img
-              src={data.data.images[currentIndex] || "/placeholder.svg"}
+              src={data.images[currentIndex] || "/placeholder.svg"}
               alt={`Fullscreen image ${currentIndex + 1}`}
               className="max-h-[90vh] max-w-[90vw] object-contain"
             />
@@ -124,7 +122,7 @@ export const ProjectDetail = () => {
 
             <button
               className={`absolute left-4 top-1/2 -translate-y-1/2 text-white hover:bg-black/50 rounded-full h-12 w-12 ${
-                data.data.images.length <= 1 ? "hidden" : ""
+                data.images.length <= 1 ? "hidden" : ""
               }`}
               onClick={(e) => {
                 e.stopPropagation();
@@ -137,7 +135,7 @@ export const ProjectDetail = () => {
 
             <button
               className={`absolute right-4 top-1/2 -translate-y-1/2 text-white hover:bg-black/50 rounded-full h-12 w-12 ${
-                data.data.images.length <= 1 ? "hidden" : ""
+                data.images.length <= 1 ? "hidden" : ""
               }`}
               onClick={(e) => {
                 e.stopPropagation();
@@ -149,7 +147,7 @@ export const ProjectDetail = () => {
             </button>
 
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white">
-              {currentIndex + 1} / {data.data.images.length}
+              {currentIndex + 1} / {data.images.length}
             </div>
           </div>
         </div>

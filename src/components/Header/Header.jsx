@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.svg";
 import { List, X } from "@phosphor-icons/react";
@@ -40,15 +40,7 @@ export const Header = () => {
                 href="/#our-projects"
                 className="font-bold text-[#5D75A5] hover:text-[#55B8FF] transition-all text-[15px]"
               >
-                Biz qilgan ishlari
-              </a>
-            </li>
-            <li>
-              <a
-                href="/#features"
-                className="font-bold text-[#5D75A5] hover:text-[#55B8FF] transition-all text-[15px]"
-              >
-                Afzalliklarimiz
+                Loyihalar
               </a>
             </li>
             <li>
@@ -56,7 +48,15 @@ export const Header = () => {
                 to="/courses"
                 className="font-bold text-[#5D75A5] hover:text-[#55B8FF] transition-all text-[15px]"
               >
-                Kurlsar
+                Kurslar
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/staffs"
+                className="font-bold text-[#5D75A5] hover:text-[#55B8FF] transition-all text-[15px]"
+              >
+                Jamoa
               </Link>
             </li>
           </ul>

@@ -1,5 +1,4 @@
 import useSWR from "swr";
-import React from "react";
 import { fetcher } from "../middlewares/Fetcher";
 
 export const Service = () => {
@@ -12,11 +11,9 @@ export const Service = () => {
           Bizning xizmatlarimiz
         </h1>
         {error && (
-          <div className="flex items-center justify-center h-[40vh]">
-            <h1 className="text-4xl font-bold text-red-600">
-              Xatolik yuz berdi!
-            </h1>
-          </div>
+          <h1 className="text-xl font-bold text-red-600 p-10 rounded-xl bg-red-100 text-center">
+            Malumotlarni yuklashda xatolik yuz berdi!
+          </h1>
         )}
         {isLoading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-10">
@@ -34,13 +31,13 @@ export const Service = () => {
               </div>
             ))}
           </div>
-        ) : data.data && data.data?.length <= 0 ? (
+        ) : data && data?.length <= 0 ? (
           <div className="flex items-center justify-center h-[40vh]">
             <h1 className="text-4xl font-bold text-[#5D75A5]">Ma'lumot yo'q</h1>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-10">
-            {data.data?.map((service, index) => (
+            {data?.map((service, index) => (
               <div
                 key={index}
                 style={{

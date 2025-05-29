@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Carousel.css";
+import { API_URL } from "../../lib/config";
 
 export const Carousel = () => {
   let radius = 300;
@@ -21,8 +22,7 @@ export const Carousel = () => {
   let tY = 10;
 
   useEffect(() => {
-    fetch("https://server.uitc.uz/api/carousel")
-      // fetch("http://localhost:5000.uz/api/carousel")
+    fetch(API_URL + "/carousel")
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data)) {
