@@ -20,19 +20,19 @@ export function Hero({
 
       <div className="absolute inset-0 overflow-hidden">
         <FloatingShape
-          gradient="bg-gradient-to-r from-[#55b8ff]/20 to-transparent"
+          gradient="bg-gradient-to-r from-[#55b8ff]/50 to-[#5d75a5]"
           className="left-[-10%] top-[20%] rotate-12"
         />
         <FloatingShape
-          gradient="bg-gradient-to-r from-[#5d75a5]/20 to-transparent"
+          gradient="bg-gradient-to-r from-[#5d75a5]/50 to-[#55b8ff]"
           className="right-[-5%] top-[70%] -rotate-12"
         />
         <FloatingShape
-          gradient="bg-gradient-to-r from-[#55b8ff]/15 to-transparent"
+          gradient="bg-gradient-to-r from-[#55b8ff]/55 to-[#5d75a5]"
           className="left-[10%] bottom-[10%] -rotate-6"
         />
         <FloatingShape
-          gradient="bg-gradient-to-r from-[#5d75a5]/15 to-transparent"
+          gradient="bg-gradient-to-r from-[#5d75a5]/55 to-[#55b8ff]"
           className="right-[20%] top-[15%] rotate-12"
         />
       </div>
