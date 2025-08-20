@@ -7,6 +7,12 @@
   scroll-behavior: smooth;
 }
 
+:root {
+  --white: #fff;
+  --blue: #55b8ff;
+  --darkblue: #5d75a5;
+}
+
 ::selection {
   color: #55b8ff;
   background: #5d75a5;

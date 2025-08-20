@@ -20,10 +20,7 @@ export const Service = () => {
             {Array.from({ length: 6 }).map((_, index) => (
               <div
                 key={index}
-                className="p-5 md:p-10 rounded-2xl bg-gray-200 animate-pulse"
-                style={{
-                  boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
-                }}
+                className="p-5 md:p-10 rounded-2xl bg-gray-200 animate-pulse border"
               >
                 <div className="h-8 w-3/4 bg-gray-300 rounded mb-3"></div>
                 <div className="h-6 w-full bg-gray-300 rounded opacity-80 mb-3"></div>
@@ -36,15 +33,9 @@ export const Service = () => {
             <h1 className="text-4xl font-bold text-[#5D75A5]">Ma'lumot yo'q</h1>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {data?.map((service, index) => (
-              <div
-                key={index}
-                style={{
-                  boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
-                }}
-                className="p-5 md:p-10 rounded-2xl transition-all hover:scale-[1.05]"
-              >
+              <div key={index} className="p-5 md:p-10 rounded-2xl border">
                 <h1 className="text-3xl text-[#5D75A5] font-bold mb-3">
                   {service.title}
                 </h1>

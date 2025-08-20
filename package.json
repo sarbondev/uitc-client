@@ -13,6 +13,7 @@
     "@phosphor-icons/react": "^2.1.7",
     "@reduxjs/toolkit": "^2.2.6",
     "axios": "^1.7.2",
+    "framer-motion": "^12.23.12",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-redux": "^9.1.2",
@@ -31,6 +32,6 @@
     "eslint-plugin-react-refresh": "^0.4.7",
     "postcss": "^8.4.40",
     "tailwindcss": "^3.4.7",
-    "vite": "^5.3.4"
+    "vite": "^7.1.3"
   }
 }
