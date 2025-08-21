@@ -4,23 +4,15 @@ import { InstagramLogo, PhoneCall, TelegramLogo } from "@phosphor-icons/react";
 
 export const Footer = () => {
   return (
-    <footer className="relative bg-gradient-to-br from-slate-800 to-[#5d75a5]  overflow-hidden">
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-10 left-10 w-32 h-32 bg-white rounded-full blur-xl"></div>
-        <div className="absolute bottom-20 right-20 w-40 h-40 bg-white rounded-full blur-2xl"></div>
-        <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-white rounded-full blur-lg"></div>
-      </div>
-
-      <div className="absolute inset-0 bg-black/20"></div>
-
-      <div className="relative container mx-auto px-4 py-16">
+    <footer className="bg-gradient-to-br from-slate-800 to-[#5d75a5] overflow-hidden">
+      <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12">
           <div className="flex flex-col gap-8">
             <Link to="/" className="inline-block">
               <img
                 src={image1 || "/placeholder.svg"}
                 alt="Company Logo"
-                className="h-12 hover:scale-105 transition-transform duration-300"
+                className="h-28 hover:scale-105 transition-transform duration-300"
               />
             </Link>
 
@@ -128,7 +120,8 @@ export const Footer = () => {
         <div className="mt-12 pt-8 border-t border-white/20">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-white/80 text-sm">
-              © 2024 United IT Clubs. Barcha huquqlar himoyalangan.
+              © {new Date().getFullYear()} United IT Clubs. Barcha huquqlar
+              himoyalangan.
             </p>
             <p className="text-white/60 text-xs">
               Zamonaviy texnologiyalar va professional ta'lim

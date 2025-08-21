@@ -4,26 +4,12 @@ import useSWR from "swr";
 import { fetcher } from "../middlewares/Fetcher";
 
 export const Portfolio = () => {
-  const itemsPerPage = 8;
-  const [page, setPage] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState("");
 
-  const getUrl = () => {
-    const size = page * itemsPerPage;
-    return selectedCategory
-      ? `/projects?category=${selectedCategory}&pageSize=${size}`
-      : `/projects?pageSize=${size}`;
-  };
-
-  const { data: projects, error, isValidating } = useSWR(getUrl(), fetcher);
+  const { data: projects, error, isValidating } = useSWR("/projects", fetcher);
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
-    setPage(1);
-  };
-
-  const handleLoadMore = () => {
-    setPage((prev) => prev + 1);
   };
 
   return (
@@ -149,19 +135,6 @@ export const Portfolio = () => {
                 </div>
               );
             })}
-          </div>
-        )}
-
-        {/* Load More Button */}
-        {projects && projects.projects.length >= page * itemsPerPage && (
-          <div className="flex justify-center mt-12">
-            <button
-              onClick={handleLoadMore}
-              className="text-white font-semibold py-3 px-8 rounded-full text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:opacity-90"
-              style={{ backgroundColor: "#55b8ff" }}
-            >
-              Ko'proq ko'rish
-            </button>
           </div>
         )}
 
