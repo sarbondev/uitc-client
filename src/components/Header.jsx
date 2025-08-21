@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
-import Logo from "../../assets/logo.svg";
+import Logo from "../assets/logo.svg";
 import { Link, useLocation } from "react-router-dom";
 
 export const Header = () => {
   const [scrollY, setScrollY] = useState(0);
   const [showHeader, setShowHeader] = useState(true);
   const [prevScrollY, setPrevScrollY] = useState(0);
-  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,12 +25,10 @@ export const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [prevScrollY]);
 
-  
-
   return (
     <>
       <header
-        className={`fixed w-full left-0 top-0 z-50 transition-all duration-300 ${
+        className={`sticky w-full left-0 top-0 z-50 transition-all duration-300 ${
           showHeader ? "translate-y-0" : "-translate-y-full"
         } ${
           scrollY > 50

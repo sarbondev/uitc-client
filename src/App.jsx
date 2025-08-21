@@ -2,7 +2,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { RootLayout } from "./layouts/RootLayout";
 import { Home } from "./pages/Home";
 import { ProjectDetail } from "./pages/ProjectDetail";
-import { CourseDetail } from "./pages/CourseDetail";
 
 function App() {
   const router = createBrowserRouter([
@@ -15,11 +14,7 @@ function App() {
           element: <Home />,
         },
         {
-          path: "courses/:id",
-          element: <CourseDetail />,
-        },
-        {
-          path: "loyihalar/:id",
+          path: ":id",
           element: <ProjectDetail />,
         },
       ],

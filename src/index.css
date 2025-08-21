@@ -39,3 +39,8 @@ body {
   max-width: 1600px;
   margin: 0 auto;
 }
+
+header {
+  background: rgba(255, 255, 255, 0.805);
+  backdrop-filter: blur(6px);
+}

@@ -1,4 +1,4 @@
-import image1 from "../../assets/logowhite.svg";
+import image1 from "../assets/logowhite.svg";
 import { Link } from "react-router-dom";
 import { InstagramLogo, PhoneCall, TelegramLogo } from "@phosphor-icons/react";
 
