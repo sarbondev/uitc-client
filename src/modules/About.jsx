@@ -112,11 +112,9 @@ export const About = () => {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="group p-8 bg-white rounded-2xl border border-[#55b8ff]/20 hover:border-[#55b8ff]/40 hover:shadow-xl transition-all duration-300"
+                className="p-8 bg-white rounded-2xl border border-[#55b8ff]/20 hover:border-[#55b8ff]/40 transition-all duration-300"
               >
-                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                  {service.icon}
-                </div>
+                <div className="text-4xl mb-4">{service.icon}</div>
                 <h3 className="text-xl font-bold text-[#5d75a5] mb-3">
                   {service.title}
                 </h3>
