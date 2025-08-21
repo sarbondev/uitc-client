@@ -29,38 +29,36 @@ export const Portfolio = () => {
   return (
     <section className="px-4 py-16 bg-white min-h-screen" id="our-projects">
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8 items-center justify-between">
-          <h1
-            className="text-4xl md:text-6xl font-bold mb-4"
-            style={{ color: "#5d75a5" }}
-          >
-            Bizning loyihalarimiz
-          </h1>
+        <div className="text-center">
+          <h2 className="text-4xl font-bold text-[#5d75a5] mb-6">
+            Biz qilgan loyihalar
+          </h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-[#55b8ff] to-[#5d75a5] mx-auto rounded-full"></div>
+        </div>
 
-          <div className="flex flex-wrap gap-3 justify-end">
-            {[
-              { key: "", label: "Barcha loyihalar" },
-              { key: "web", label: "Vebsayt" },
-              { key: "design", label: "Brending" },
-              { key: "modeling", label: "3D modeling" },
-            ].map((category) => (
-              <button
-                key={category.key}
-                onClick={() => handleCategoryClick(category.key)}
-                className={`rounded-full px-6 py-2 text-sm font-medium transition-all duration-300 border ${
-                  selectedCategory === category.key
-                    ? "text-white border-transparent hover:opacity-90"
-                    : "text-white border-transparent hover:opacity-80"
-                }`}
-                style={{
-                  backgroundColor:
-                    selectedCategory === category.key ? "#5d75a5" : "#55b8ff",
-                }}
-              >
-                {category.label}
-              </button>
-            ))}
-          </div>
+        <div className="flex flex-wrap gap-3 justify-center my-10">
+          {[
+            { key: "", label: "Barcha loyihalar" },
+            { key: "web", label: "Vebsayt" },
+            { key: "design", label: "Brending" },
+            { key: "modeling", label: "3D modeling" },
+          ].map((category) => (
+            <button
+              key={category.key}
+              onClick={() => handleCategoryClick(category.key)}
+              className={`rounded-full px-6 py-2 text-sm font-medium transition-all duration-300 border ${
+                selectedCategory === category.key
+                  ? "text-white border-transparent hover:opacity-90"
+                  : "text-white border-transparent hover:opacity-80"
+              }`}
+              style={{
+                backgroundColor:
+                  selectedCategory === category.key ? "#5d75a5" : "#55b8ff",
+              }}
+            >
+              {category.label}
+            </button>
+          ))}
         </div>
 
         {/* Loading */}

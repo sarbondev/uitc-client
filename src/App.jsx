@@ -1,9 +1,7 @@
-import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { RootLayout } from "./layouts/RootLayout";
 import { Home } from "./pages/Home";
 import { ProjectDetail } from "./pages/ProjectDetail";
-import { Courses } from "./pages/Courses";
 import { CourseDetail } from "./pages/CourseDetail";
 
 function App() {
@@ -19,10 +17,6 @@ function App() {
         {
           path: "courses/:id",
           element: <CourseDetail />,
-        },
-        {
-          path: "courses",
-          element: <Courses />,
         },
         {
           path: "loyihalar/:id",

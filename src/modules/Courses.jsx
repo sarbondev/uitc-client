@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import useSWR from "swr";
 import { Link } from "react-router-dom";
 import { fetcher } from "../middlewares/Fetcher";
@@ -6,34 +5,12 @@ import { fetcher } from "../middlewares/Fetcher";
 export const Courses = () => {
   const { data, error, isLoading } = useSWR(`/courses`, fetcher);
 
-  const [searchTerm, setSearchTerm] = useState("");
-
-  const filteredCourses = data?.filter((course) =>
-    course.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
   return (
-    <section className="min-h-screen pb-20">
+    <section className="min-h-screen py-10">
       <div className="container px-4">
-        <div className="grid grid-cols-1 md:grid-cols-[3fr_1fr] items-center">
-          <h1 className="my-10 lg:my-20 text-3xl md:text-5xl font-bold text-[#5D75A5]">
-            Kurslar
-          </h1>
-          <form className="flex justify-end items-center border-2 border-[#5D75A5]">
-            <input
-              type="text"
-              placeholder="Kurslarni qidirish..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full p-2 outline-none"
-            />
-            <button
-              type="button"
-              className="bg-[#5D75A5] px-5 py-2 font-bold text-white"
-            >
-              Qidirish
-            </button>
-          </form>
+        <div className="text-center">
+          <h2 className="text-4xl font-bold text-[#5d75a5] mb-6">Kurslar</h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-[#55b8ff] to-[#5d75a5] mx-auto rounded-full"></div>
         </div>
 
         {!isLoading ||
@@ -72,8 +49,8 @@ export const Courses = () => {
           </div>
         ) : (
           <div className="pt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {filteredCourses.length > 0 ? (
-              filteredCourses.map((course, index) => (
+            {data.length > 0 ? (
+              data.map((course, index) => (
                 <div
                   key={index}
                   className="rounded-3xl overflow-hidden"
