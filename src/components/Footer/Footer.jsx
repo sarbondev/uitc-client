@@ -4,12 +4,14 @@ import { InstagramLogo, PhoneCall, TelegramLogo } from "@phosphor-icons/react";
 
 export const Footer = () => {
   return (
-    <footer className="relative bg-gradient-to-br from-[#5d75a5] via-[#55b8ff] to-[#5d75a5] overflow-hidden">
-      <div className="absolute inset-0 opacity-10">
+    <footer className="relative bg-gradient-to-br from-slate-800 to-[#5d75a5]  overflow-hidden">
+      <div className="absolute inset-0 opacity-5">
         <div className="absolute top-10 left-10 w-32 h-32 bg-white rounded-full blur-xl"></div>
         <div className="absolute bottom-20 right-20 w-40 h-40 bg-white rounded-full blur-2xl"></div>
         <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-white rounded-full blur-lg"></div>
       </div>
+
+      <div className="absolute inset-0 bg-black/20"></div>
 
       <div className="relative container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12">

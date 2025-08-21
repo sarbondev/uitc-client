@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import Logo from "../../assets/logo.svg";
+import { Link, useLocation } from "react-router-dom";
 
 export const Header = () => {
   const [scrollY, setScrollY] = useState(0);
   const [showHeader, setShowHeader] = useState(true);
   const [prevScrollY, setPrevScrollY] = useState(0);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,6 +26,8 @@ export const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [prevScrollY]);
 
+  
+
   return (
     <>
       <header
@@ -35,14 +39,9 @@ export const Header = () => {
             : "bg-transparent"
         }`}
       >
-        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
+        <div className="container mx-auto p-4 flex items-center justify-between">
           <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-[#55B8FF] to-[#5D75A5] rounded-xl flex items-center justify-center">
-              <span className="text-white font-bold text-lg">U</span>
-            </div>
-            <span className="text-[#5D75A5] font-bold text-xl hidden sm:block">
-              United IT
-            </span>
+            <img src={Logo} alt="logo" className="h-16" />
           </Link>
 
           <a
